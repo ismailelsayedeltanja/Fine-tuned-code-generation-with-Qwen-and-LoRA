@@ -3,7 +3,13 @@
 Fine-tune large language models for domain-specific code generation using **LoRA** and **QLoRA** techniques.
 Supports multiple inference backends and includes structured output validation with Pydantic.
 
----
+ترتيب التشغيل
+
+pip install -r requirements.txt
+python prepare_data.py      # جهز البيانات
+python train.py             # Fine-tune
+python inference.py         # جرب النموذج
+python evaluate.py          # قيّم النتائج
 
 ## Features
 
