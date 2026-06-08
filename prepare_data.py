@@ -175,7 +175,6 @@ def save_jsonl(examples: list, path: str):
 
 
 if __name__ == "__main__":
-    # شغّل الجزء ده فقط لو الملف اتشغل  
     train_data, val_data = split_data(EXAMPLES)
 
     save_jsonl(train_data, "data/train.jsonl")
