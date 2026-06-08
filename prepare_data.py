@@ -7,6 +7,18 @@ import os
 EXAMPLES = [           # دي dataset نفسها
                        # عبارة عن List
                        # كل عنص فيها Dictionary
+  '''
+1.EXAMPLES
+   
+2.split_data()
+  
+3.train_data + val_data
+   
+4.save_jsonl()
+  
+5.train.jsonl + val.jsonl
+
+  '''
      {
         "instruction": "Write a Python function that returns the factorial of a number.",
         "input": "",      #Write a Python function
