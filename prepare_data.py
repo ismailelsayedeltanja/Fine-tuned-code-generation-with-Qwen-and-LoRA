@@ -1,10 +1,13 @@
 import json
 import os
 import random
-
+# هنا هنستخدم json.dumps() علشان نحول الـ dictionary إلى JSON text
 # Sample dataset — replace with your own examples
-EXAMPLES = [
-    {
+# random.shuffle() علشان نلخبط ترتيب البيانات قبل التقسيم
+EXAMPLES = [           # دي dataset نفسها
+                       # عبارة عن List
+                       # كل عنص فيها Dictionary
+     {
         "instruction": "Write a Python function that returns the factorial of a number.",
         "input": "",
         "output": (
