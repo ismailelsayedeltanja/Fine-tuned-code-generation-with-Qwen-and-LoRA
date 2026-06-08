@@ -117,16 +117,16 @@ def train(cfg: TrainingConfig):
         train_dataset=dataset,
         dataset_text_field="text",
         max_seq_length=cfg.max_seq_length,
-        args=training_args,
+        args=training_args, # عدادات التدريب اللي فوق
     )
 
     print("Starting training...")
-    trainer.train()
+    trainer.train()   # بدء التدريب                
 
     # 5. Save LoRA adapter weights only (not the full base model)
     adapter_path = os.path.join(cfg.output_dir, "lora_adapter")
-    model.save_pretrained(adapter_path)
-    tokenizer.save_pretrained(adapter_path)
+    model.save_pretrained(adapter_path) #LoRA weights فقط (مش الموديل كامل)
+    tokenizer.save_pretrained(adapter_path) #$ حفظ tokenizer
     print(f"LoRA adapter saved to: {adapter_path}")
 
 
