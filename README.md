@@ -18,16 +18,15 @@ Supports multiple inference backends and includes structured output validation w
 ## Project Structure
 
 ```
-.
-├── config.py          # All hyperparameters and settings in one place
-├── train.py           # QLoRA fine-tuning loop
-├── inference.py       # Multi-backend inference + Pydantic validation
-├── embeddings.py      # Code embeddings with HuggingFace Transformers
-├── prepare_data.py    # Convert raw examples to JSONL training format
-├── evaluate.py        # BLEU + exact match evaluation
-├── requirements.txt
-├── data/              # Training and validation JSONL files (git-ignored)
-└── outputs/           # Checkpoints and embeddings (git-ignored)
+ requirements.txt
+ 1.config.py         > All hyperparameters and settings in one place
+ 2.train.py          > QLoRA fine-tuning loop
+ 3.inference.py      > Multi-backend inference + Pydantic validation
+ 4.embeddings.py     > Code embeddings with HuggingFace Transformers
+ 5.prepare_data.py   > Convert raw examples to JSONL training format
+ 6.evaluate.py       > BLEU + exact match evaluation
+ 7.data/             > Training and validation JSONL files (git-ignored)
+ 8.outputs/          > Checkpoints and embeddings (git-ignored)
 ```
 
 ---
@@ -36,7 +35,7 @@ Supports multiple inference backends and includes structured output validation w
 
 ### 1. Install dependencies
 
-```bash
+```
 pip install -r requirements.txt
 ```
 
@@ -44,7 +43,7 @@ pip install -r requirements.txt
 
 Edit the `EXAMPLES` list in `prepare_data.py` with your own code examples, then run:
 
-```bash
+```
 python prepare_data.py
 ```
 
