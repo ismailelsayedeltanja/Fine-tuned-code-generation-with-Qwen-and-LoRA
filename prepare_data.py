@@ -168,19 +168,20 @@ def save_jsonl(examples: list, path: str):
         for ex in examples:
             f.write(
                 json.dumps(ex, ensure_ascii=False) + "\n"
-            )
-
+            )   # dump	إلى file
+                # dumps	إلى string
+                # ensure_ascii=False بدونه العربي يتحول Unicode
     print(f"Saved {len(examples)} examples to {path}")
 
 
 if __name__ == "__main__":
-
+    # شغّل الجزء ده فقط لو الملف اتشغل  
     train_data, val_data = split_data(EXAMPLES)
 
     save_jsonl(train_data, "data/train.jsonl")
     save_jsonl(val_data, "data/val.jsonl")
 
-    print("Data preparation complete.")
+    print("Data preparation complete %%%%%%%%%%%%%")
     print(f"Train: {len(train_data)} examples")
     print(f"Val:   {len(val_data)} examples")
 
