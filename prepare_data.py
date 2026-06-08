@@ -1,6 +1,6 @@
+from sklearn.model_selection import train_test_split
 import json
 import os
-import random
 # هنا هنستخدم json.dumps() علشان نحول الـ dictionary إلى JSON text
 # Sample dataset — replace with your own examples
 # random.shuffle() علشان نلخبط ترتيب البيانات قبل التقسيم
@@ -9,7 +9,7 @@ EXAMPLES = [           # دي dataset نفسها
                        # كل عنص فيها Dictionary
      {
         "instruction": "Write a Python function that returns the factorial of a number.",
-        "input": "",
+        "input": "",      #Write a Python function
         "output": (
             "def factorial(n: int) -> int:\n"
             "    if n < 0:\n"
@@ -24,17 +24,17 @@ EXAMPLES = [           # دي dataset نفسها
     },
     {
         "instruction": "Write a function that checks if a string is a palindrome.",
-        "input": "",
+        "input": "",    # بيعمل lowercase w حذف المسافات
         "output": (
             "def is_palindrome(s: str) -> bool:\n"
             "    cleaned = s.lower().replace(' ', '')\n"
-            "    return cleaned == cleaned[::-1]"
+            "    return cleaned == cleaned[::-1]" # دي slicing لعكس الـ string
         ),
     },
     {
         "instruction": "Add type hints and a docstring to this function.",
         "input": (
-            "def divide(a, b):\n"
+            "def divide(a, b):\n"   # قسمة رقمين
             "    return a / b"
         ),
         "output": (
@@ -56,7 +56,7 @@ EXAMPLES = [           # دي dataset نفسها
     },
     {
         "instruction": "Write a Python class for a simple stack data structure.",
-        "input": "",
+        "input": "",   #Write a Python class
         "output": (
             "class Stack:\n"
             "    def __init__(self):\n"
@@ -79,7 +79,7 @@ EXAMPLES = [           # دي dataset نفسها
     },
     {
         "instruction": "Write a function that reads a JSON file and returns its content as a dictionary.",
-        "input": "",
+        "input": "",     #Write a function that reads a JSON file
         "output": (
             "import json\n\n"
             "def read_json(file_path: str) -> dict:\n"
@@ -89,7 +89,7 @@ EXAMPLES = [           # دي dataset نفسها
     },
     {
         "instruction": "Write a Python function to flatten a nested list.",
-        "input": "",
+        "input": "",    #بيعلّم  model إزاي يكت function بتفك  Nested Lists
         "output": (
             "def flatten(nested: list) -> list:\n"
             "    result = []\n"
@@ -103,7 +103,7 @@ EXAMPLES = [           # دي dataset نفسها
     },
     {
         "instruction": "Write a function that counts word frequency in a string.",
-        "input": "",
+        "input": "",      # يعرف كل كلمة اتكررت كام مرة
         "output": (
             "from collections import Counter\n\n"
             "def word_frequency(text: str) -> dict:\n"
@@ -113,7 +113,7 @@ EXAMPLES = [           # دي dataset نفسها
     },
     {
         "instruction": "Write a Python decorator that measures function execution time.",
-        "input": "",
+        "input": "",   # أي function تحط فوقها timer هيطبع مدة تنفيذها بالثواني
         "output": (
             "import time\nfrom functools import wraps\n\n"
             "def timer(func):\n"
@@ -130,26 +130,47 @@ EXAMPLES = [           # دي dataset نفسها
 ]
 
 
+
+
+#from sklearn.model_selection import train_test_split
+# Split data 
 def split_data(examples: list, train_ratio: float = 0.8):
-    """Split examples into train and validation sets."""
-    random.shuffle(examples)
-    split_idx = int(len(examples) * train_ratio)
-    return examples[:split_idx], examples[split_idx:]
+
+    train_data, val_data = train_test_split(
+        examples,
+        test_size=0.2,
+        shuffle=True,
+        random_state=101,
+    )
+
+    return train_data, val_data
 
 
+# Save examples aqs JSONL
 def save_jsonl(examples: list, path: str):
-    """Save examples as JSONL."""
+
     os.makedirs(os.path.dirname(path), exist_ok=True)
+
     with open(path, "w", encoding="utf-8") as f:
+
         for ex in examples:
-            f.write(json.dumps(ex, ensure_ascii=False) + "\n")
+            f.write(
+                json.dumps(ex, ensure_ascii=False) + "\n"
+            )
+
     print(f"Saved {len(examples)} examples to {path}")
 
 
 if __name__ == "__main__":
+
     train_data, val_data = split_data(EXAMPLES)
+
     save_jsonl(train_data, "data/train.jsonl")
     save_jsonl(val_data, "data/val.jsonl")
+
     print("Data preparation complete.")
-    print(f"  Train: {len(train_data)} examples")
-    print(f"  Val:   {len(val_data)} examples")
+    print(f"Train: {len(train_data)} examples")
+    print(f"Val:   {len(val_data)} examples")
+
+
+
