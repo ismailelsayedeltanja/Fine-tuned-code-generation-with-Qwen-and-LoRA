@@ -173,16 +173,4 @@ Any HuggingFace causal LM works. Tested with:
 3. After training, you save only the adapter (~50 MB), not the full model.
 4. At inference time, load the base model + adapter together.
 
-```
-Base model (frozen, 4-bit)
-        +
-LoRA adapters (trainable, fp32)
-        =
-Fine-tuned behavior at a fraction of the cost
-```
 
----
-
-## License
-
-MIT
