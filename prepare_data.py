@@ -151,7 +151,7 @@ def split_data(examples: list, train_ratio: float = 0.8):
     train_data, val_data = train_test_split(
         examples,
         test_size=0.2, #train_size = train_ratio = 0.8
-        shuffle=True,
+        shuffle=True,  # test_size = 1 - train_ratio
         random_state=101,
     )
 
