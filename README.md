@@ -4,7 +4,7 @@ Fine-tune large language models for domain-specific code generation using **LoRA
 Supports multiple inference backends and includes structured output validation with Pydantic.
 
 ## Pipelne
--pip install -r requirements.txt
+-pip install -r requirements.txt      
 -python prepare_data.py      
 -python train.py             
 -python inference.py        
