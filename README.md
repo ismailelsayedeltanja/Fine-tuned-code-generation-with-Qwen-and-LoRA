@@ -112,9 +112,9 @@ result = generate_code(
     cfg=cfg,
 )
 
-print(result.language)      # "python"
-print(result.explanation)   # "Sorts a list of dicts using the sorted() built-in..."
-print(result.code)          # def sort_by_key(items, key): ...
+print(result.language)       >"python"
+print(result.explanation)    >"Sorts a list of dicts using the sorted() built-in..."
+print(result.code)           > def sort_by_key(items, key): ...
 ```
 
 ### 7. Generate code embeddings
@@ -138,7 +138,7 @@ print(corpus[idx])   # def read_file(path): ...
 
 ### 8. Evaluate
 
-```bash
+```
 python evaluate.py
 ```
 
@@ -148,21 +148,21 @@ python evaluate.py
 
 Any HuggingFace causal LM works. Tested with:
 
-| Model | Size | Notes |
-|---|---|---|
-| `Qwen/Qwen2.5-Coder-1.5B-Instruct` | 1.5B | Fast, low VRAM |
-| `Qwen/Qwen2.5-Coder-7B-Instruct` | 7B | Better quality |
-| `bigcode/starcoder2-3b` | 3B | General code |
+ Model Size  Notes 
+
+ `Qwen/Qwen2.5-Coder-1.5B-Instruct`  1.5B  Fast, low VRAM 
+ `Qwen/Qwen2.5-Coder-7B-Instruct` 7B  Better quality 
+ `bigcode/starcoder2-3b`  3B  General code 
 
 ---
 
 ## Hardware Requirements
 
-| Mode | Minimum GPU VRAM |
-|---|---|
-| QLoRA (4-bit) training | 8 GB |
-| Inference (HuggingFace, fp16) | 8 GB |
-| Groq / Ollama backends | No GPU needed |
+ Mode  Minimum GPU VRAM 
+
+ QLoRA (4-bit) training  8 GB 
+ Inference (HuggingFace, fp16)  8 GB 
+ Groq / Ollama backends  No GPU needed 
 
 ---
 
